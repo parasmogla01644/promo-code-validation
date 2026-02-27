@@ -6,6 +6,7 @@ import {
     PROMOCODE_VALIDATION,
 } from "../../utils/validations";
 import style from "./index.module.css";
+import Input from "../Input";
 
 const PromoCodeForm = () => {
     const { control, formState, handleSubmit, reset } = useForm();
@@ -60,17 +61,15 @@ const PromoCodeForm = () => {
                         field: { value, onChange },
                         fieldState: { error },
                     }) => (
-                        <div className={style.inputWrapper}>
-                            <input
-                                placeholder="Enter Email ID"
-                                value={value}
-                                onChange={(e) => {
-                                    onChange(e.target.value);
-                                    if (message) setMessage("");
-                                }}
-                            />
-                            {!!error?.message && <p>{error.message}</p>}
-                        </div>
+                        <Input
+                            placeholder="Enter Email ID"
+                            value={value}
+                            onChange={(e) => {
+                                onChange(e.target.value);
+                                if (message) setMessage("");
+                            }}
+                            error={error?.message}
+                        />
                     )}
                 />
 
@@ -92,17 +91,15 @@ const PromoCodeForm = () => {
                         field: { value, onChange },
                         fieldState: { error },
                     }) => (
-                        <div className={style.inputWrapper}>
-                            <input
-                                placeholder="Enter Promo Code"
-                                value={value}
-                                onChange={(e) => {
-                                    onChange(e.target.value.toUpperCase());
-                                    if (message) setMessage("");
-                                }}
-                            />
-                            {!!error?.message && <p>{error.message}</p>}
-                        </div>
+                        <Input
+                            placeholder="Enter Promo Code"
+                            value={value}
+                            onChange={(e) => {
+                                onChange(e.target.value.toUpperCase());
+                                if (message) setMessage("");
+                            }}
+                            error={error?.message}
+                        />
                     )}
                 />
 

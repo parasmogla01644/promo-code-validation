@@ -1,0 +1,21 @@
+.inputWrapper {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.inputWrapper input {
+    width: 100%;
+    font-size: 18px;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.inputWrapper input:focus-visible {
+    outline: unset;
+}
+
+.inputWrapper p {
+    margin-top: 4px;
+    color: red;
+}
