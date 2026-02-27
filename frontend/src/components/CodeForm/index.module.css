@@ -12,6 +12,14 @@
     margin-bottom: 16px;
 }
 
+.container .responseMsg.success {
+    color: #22c55e;
+}
+
+.container .responseMsg.error {
+    color: red;
+}
+
 .container button {
     background-color: black;
     color: white;

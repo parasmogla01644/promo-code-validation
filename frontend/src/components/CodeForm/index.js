@@ -10,7 +10,7 @@ import Input from "../Input";
 
 const PromoCodeForm = () => {
     const { control, formState, handleSubmit, reset } = useForm();
-    const [message, setMessage] = useState("");
+    const [responseConfig, setResponseConfig] = useState(null);
 
     const handleFormSubmit = async (formValues) => {
         try {
@@ -23,9 +23,10 @@ const PromoCodeForm = () => {
             );
 
             if (res.data.success) {
-                setMessage(
-                    `${res.data?.message} | Discount: ${res.data.discount}%`,
-                );
+                setResponseConfig({
+                    message: `${res.data?.message} | Discount: ${res.data.discount}%`,
+                    success: true,
+                });
                 reset({ email: "", promo_code: "" });
             }
         } catch (e) {
@@ -33,14 +34,20 @@ const PromoCodeForm = () => {
                 e?.response?.data?.message ||
                 e?.response?.data?.error ||
                 "Something went wrong. Please try again.";
-            setMessage(msg);
+            setResponseConfig({ message: msg, success: false });
         }
     };
 
     return (
         <div className={style.container}>
             <h2>Promo Code Validator</h2>
-            {!!message && <div className={style.responseMsg}>{message}</div>}
+            {!!responseConfig?.message && (
+                <div
+                    className={`${style.responseMsg} ${responseConfig.success ? style.success : style.error}`}
+                >
+                    {responseConfig.message}
+                </div>
+            )}
 
             <form onSubmit={handleSubmit(handleFormSubmit)}>
                 <Controller
@@ -66,7 +73,7 @@ const PromoCodeForm = () => {
                             value={value}
                             onChange={(e) => {
                                 onChange(e.target.value);
-                                if (message) setMessage("");
+                                if (responseConfig) setResponseConfig(null);
                             }}
                             error={error?.message}
                         />
@@ -96,7 +103,7 @@ const PromoCodeForm = () => {
                             value={value}
                             onChange={(e) => {
                                 onChange(e.target.value.toUpperCase());
-                                if (message) setMessage("");
+                                if (responseConfig) setResponseConfig(null);
                             }}
                             error={error?.message}
                         />

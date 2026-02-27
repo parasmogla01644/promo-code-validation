@@ -6,6 +6,6 @@ function maskEmail(email) {
 export const logRequest = (email = "", promoCode = "", result = "") => {
     const timestamp = new Date().toISOString().replace("T", " ").split(".")[0];
     console.log(
-        `[${timestamp}] - Email ID: ${maskEmail(email)} | Code: ${promoCode} | Result: ${result}`,
+        `[${timestamp}] - Email: ${maskEmail(email)} | CODE: ${promoCode} | Result: ${result}`,
     );
 };

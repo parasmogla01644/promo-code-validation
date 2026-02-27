@@ -16,7 +16,7 @@ Includes client-side validation, server-side validation, logging and error handl
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 ### Backend Setup
 
