@@ -53,7 +53,7 @@ export const PromocodeControllers = () => {
             logRequest(email, promo_code, "Promo code not found");
             return res.status(404).json({
                 success: false,
-                error_code: "PROMOCODE_NOT_FOUND",
+                error_code: "PROMO_CODE_NOT_FOUND",
                 message: "Promo code not found",
             });
         }
